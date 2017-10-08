@@ -1,17 +1,38 @@
 
-自动加载模块类:
-	动态加载模块
-
-    模块存在?
-    模块下是否有指定方法?
-  	模块加载情况?
 
 
-统计日志:
-  统计ip  top10
-  统计url top10
-函数:
-  计算阶乘
-  求和
- 
 
+Context
+loader
+Template
+
+##################django#shell#####################
+from django.template import Template,Context,loader
+
+t = Template("My name is {{ title }}.")
+# t = loader.get_template("user/login.html")
+
+c = Context({"title":"运维平台"})
+t.render(c)
+
+##################################################
+from django.template import Template,Context,loader
+
+t = loader.get_template("user/login.html")
+
+# c = Context({"title":"运维平台"}) #1.8
+c = {"title":"运维平台"}            #1.11
+t.render(c)
+##################################################
+
+from django.template import Template,Context,loader
+
+t = Template("My name is {{ title }}.")
+
+c = Context({})
+t.render(c)
+
+
+                            django.core.management
+django-admin.py             .execute_manager()          + setup_environ(settings_mod)
+manager.py                  .execute_from_command_line()
